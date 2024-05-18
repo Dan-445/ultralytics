@@ -148,8 +148,9 @@ class SpeedEstimator:
             time_difference = time() - self.trk_previous_times[trk_id]
             if time_difference > 0:
                 dist_difference = np.abs(track[-1][1] - self.trk_previous_points[trk_id][1])
-                speed = (dist_difference / time_difference) * 0.621371
-                self.dist_data[trk_id] = speed
+                speed = dist_difference / time_difference
+                speed_mph= speed  * 0.621371
+                self.dist_data[trk_id] = speed_mph
 
         self.trk_previous_times[trk_id] = time()
         self.trk_previous_points[trk_id] = track[-1]
